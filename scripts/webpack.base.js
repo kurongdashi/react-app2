@@ -73,7 +73,12 @@ module.exports = {
       },
       {
         test: /\.(svg|png|gif|\.jpe?g)$/,
-        type: 'asset/resource' //以base64 方式导出
+        type: 'asset/resource', //以base64 方式导出
+        generator: {
+          // publicPath: 'https://cdn-xxx',
+          // outputpath: 'assets',
+          filename: 'assets/[hash][ext]'
+        }
         // use: [
         //   {
         //     loader: 'url-loader',
