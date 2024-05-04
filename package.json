@@ -1,11 +1,12 @@
 {
-  "name": "react",
+  "name": "react-app2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./scripts/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./scripts/webpack.prod.js"
+    "dev": "cross-env NODE_ENV=development webpack server --config ./scripts/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./scripts/webpack.prod.js",
+    "debug": "node --inspect-brk ./node_modules/webpack-cli/bin/cli.js --config ./scripts/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -23,13 +24,14 @@
     "antd": "^5.11.5",
     "axios": "^1.6.2",
     "less": "^4.2.0",
+    "loader-utils": "^3.2.1",
     "mini-css-extract-plugin": "^2.7.6",
     "qiankun": "^2.10.16",
     "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.3.2",
-    "webpack": "^5.89.0"
+    "webpack": "5.73.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
@@ -63,6 +65,7 @@
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.3.0",
     "prettier": "^3.1.0",
+    "safe-require": "^1.0.4",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.1",
     "webpack-cli": "^5.1.4",

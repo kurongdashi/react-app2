@@ -14,8 +14,8 @@ const devConfig = {
   devServer: {
     hot: true,
     port: PORT,
-    open: true,
-    compress: true, //压缩代码
+    // open: true,
+    // 允许主应用跨域加载子应用
     headers: {
       'Access-Control-Allow-Origin': '*'
     },

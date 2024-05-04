@@ -1,3 +1,3 @@
-module.exports={
-    PORT:8003,
-}
+module.exports = {
+  PORT: 8002
+};
