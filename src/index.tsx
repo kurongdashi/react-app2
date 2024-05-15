@@ -1,11 +1,9 @@
-import './public-path';
 import React from 'react';
 import ReactDOM, { createRoot } from 'react-dom/client';
 import App from './App';
 
 let root: any = null;
 const render = (props?: any) => {
-  debugger;
   root = createRoot(
     props.container
       ? props.container.querySelector('#root')
@@ -14,10 +12,6 @@ const render = (props?: any) => {
   root.render(<App {...props} />);
 };
 // // 非乾坤还是走原来的逻辑
-// console.log(
-//   '(window as any).__POWERED_BY_QIANKUN__',
-//   (window as any).__POWERED_BY_QIANKUN__
-// );
 if (!(window as any).__POWERED_BY_QIANKUN__) {
   render({});
 }

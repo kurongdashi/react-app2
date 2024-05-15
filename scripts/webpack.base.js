@@ -7,13 +7,13 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const inlineChunkWebpackPlugin = require('../plugins/inline-chunk-webpack-plugin');
 module.exports = {
   // entry: './src/index.tsx',
-  entry: './src/entry.js',
+  entry: './src/bootstrap.js',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'js/[name][hash:6].js',
+    filename: 'js/[name].[hash:6].js',
     // 本地BrowserRouter 配置将请求路径转发的 index.html
     clean: true,
-    publicPath: 'auto',
+    publicPath: '/',
     // qiankun子应用配置
     library: `${name}-[name]`,
     libraryTarget: 'umd',
@@ -34,12 +34,14 @@ module.exports = {
       'process.env.PUBLIC_PATH': "'/public'"
     }),
     new MiniCssExtractPlugin({
-      filename: '../assets/[name][hash:6].css'
+      filename: '../assets/[name].[hash:6].css'
     }),
     new htmlWebpackPlugin({
       title: 'app2应用',
+      favicon: path.resolve(__dirname, '../src/react.svg'),
       template: path.resolve(__dirname, '../public/index.html'),
-      chunks: ['remoteEntry', 'main']
+      chunks: ['app2', 'main'],
+      chunksSortMode: 'manual'
     }),
     new ModuleFederationPlugin({
       name: 'app2',
@@ -97,11 +99,11 @@ module.exports = {
       },
       {
         test: /\.(svg|png|gif|jpe?g)$/,
-        loader: './loader/file-loader.js'
-        // type: 'asset', //以base64 方式导出
-        // generator: {
-        //   filename: 'assets/[hash][ext]'
-        // }
+        loader: './loader/file-loader.js',
+        type: 'asset', //以base64 方式导出
+        generator: {
+          filename: 'assets/[hash][ext]'
+        }
         // use: [
         //   {
         //     loader: 'url-loader',
